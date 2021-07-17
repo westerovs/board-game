@@ -1,8 +1,3 @@
-/*
-картинки-заглушки
-https://via.placeholder.com/150x100
-*/
-
 *,
 ::before,
 ::after {
@@ -39,21 +34,131 @@ img {
 
 /*безопасное скрытие элемента*/
 .visually-hidden {
-    position: absolute !important;
-    width: 1px !important;
-    height: 1px !important;
-    margin: -1px !important;
-    padding: 0 !important;
-    border: 0 !important;
-    clip: rect(0 0 0 0) !important;
-    overflow: hidden !important;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
 }
 
-.wrapper {
+.game {
     position: relative;
     margin: 50px auto;
-    min-width: 400px;
-    width: 400px;
-    min-height: 400px;
-    outline: 2px dashed gold;
+    width: 980px;
+    height: 630px;
+    outline: 1px solid gray;
+}
+
+.game__background {
+    position: absolute;
+    width: 980px;
+    height: 605px;
+}
+
+.game__btn {
+    min-width: 65px;
+    height: 60px;
+    border-radius: 10px;
+    background-color: #54B3C1;
+    box-shadow: 2px 2px 2px black;
+}
+
+/* =================================*/
+/* ============ controls ========== */
+/* =================================*/
+.game__controls {
+    position: absolute;
+    padding: 0 4px;
+    bottom: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+
+/* =================================*/
+/* ============ slider ============ */
+/* =================================*/
+.slider {
+    position: relative;
+    width: 536px;
+    background-color: gray;
+    /*background-image: url("../img/slider/bg-friends.png");*/
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.slider-row {
+    outline: 2px dashed blue;
+    display: grid;
+    grid-template-columns: min-content 1fr min-content;
+    padding: 6px 0;
+    gap: 5px;
+}
+
+.slider-list {
+    display: flex;
+    /*width: 100%;*/
+    gap: 12px;
+    transition: 0.5s;
+    outline: 2px dashed red;
+    overflow-x: hidden;
+}
+
+.slider-item {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 20px;
+    background-color: #9D4516;
+    /*background-image: url("../img/slider/item-empty.png");*/
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.slider-item--active {
+    /*background-image: url("../img/slider/item-active.png");*/
+}
+
+.slider-item--add::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: 0px;
+    width: 22px;
+    height: 22px;
+    background: red;
+
+}
+
+.slider-item--empty {
+    /*background-image: url("../img/slider/item-empty.png");*/
+}
+
+.slider-btn {
+    outline: 2px dashed red;
+    padding: 0 20px 0 10px;
+    width: 14px;
+    /*height: 50px;*/
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.slider-btn-prev {
+    background-image: url("../img/slider/controll-arrow.png");
+}
+
+.slider-btn-next {
+    background-image: url("../img/slider/controll-arrow.png");
+    transform: rotate(-180deg);
 }

@@ -2,17 +2,51 @@
 <html class="page" lang="ru">
 <head>
   <meta charset="UTF-8">
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="#" type="image/x-icon">
-  <title>Template</title>
+  <title>Test task for Zebomba</title>
   <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body class="page-body">
 
-<div class="wrapper">
+<main id="game" class="game">
+  <img class="game__background" width="980" height="605" src="./src/img/background-map.png" alt="игровое поле">
+  <div class="game__user"></div>
 
-</div>
+  <section class="game__controls">
+
+    <div class="slider">
+      <div class="slider-row">
+        <button class="slider-btn slider-btn-prev" aria-label="предыдущий слайд"></button>
+        <ul class="slider-list">
+          <li class="slider-item slider-item--active slider-item--add">1</li>
+          <li class="slider-item slider-item--active">2</li>
+          <li class="slider-item slider-item--active">3</li>
+          <li class="slider-item slider-item--active">4</li>
+          <li class="slider-item slider-item--active">5</li>
+          <li class="slider-item slider-item--active">6</li>
+          <li class="slider-item slider-item--empty">7</li>
+          <li class="slider-item slider-item--empty">8</li>
+          <li class="slider-item slider-item--empty">9</li>
+          <li class="slider-item slider-item--empty">10</li>
+          <li class="slider-item slider-item--empty">11</li>
+          <li class="slider-item slider-item--empty">12</li>
+          <li class="slider-item slider-item--empty">13</li>
+          <li class="slider-item slider-item--empty">14</li>
+          <li class="slider-item slider-item--empty">15</li>
+          <li class="slider-item slider-item--empty">16</li>
+        </ul>
+        <button class="slider-btn slider-btn-next" aria-label="следующий слайд"></button>
+      </div>
+    </div>
+
+    <!--<button type="button" class="game__btn btn&#45;&#45;chat" aria-label="открыть чат"></button>-->
+    <!--<button type="button" class="game__btn btn&#45;&#45;action" aria-label="переход на позицию в универ"></button>-->
+    <!--<button type="button" class="game__btn btn&#45;&#45;message" aria-label="открыть сообщения"></button>-->
+    <!--<button type="button" class="game__btn btn-rating" aria-label="открыть рейтинг"></button>-->
+  </section>
+
+</main>
 
 <script src="src/js/index.js"></script>
 </body>
