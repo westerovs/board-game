@@ -1,54 +1,24 @@
-// let position = 0
-// const sliderToShow = 8
-// const sliderToScroll = 1
-// const container = document.querySelector('.slider-row')
-// const track = document.querySelector('.slider-list')
-//
-// const btnPrev = document.querySelector('.btn-prev')
-// const btnNext = document.querySelector('.btn-next')
-// const items = document.querySelectorAll('.slider-item')
-// const itemsCount = items.length
-// const itemWidth = container.clientWidth / sliderToShow
-// const movePosition = sliderToScroll * itemWidth
-//
-// items.forEach(item => item.style.minWidth = `${ itemWidth }px`)
-//
-// btnNext.addEventListener('click', () => {
-//     const itemsLeft = itemsCount - (Math.abs(position) + sliderToShow * itemWidth) / itemWidth
-//
-//     position -= itemsLeft >= sliderToScroll ? movePosition : itemsLeft * itemWidth
-//
-//     setPosition()
-//     checkBtns()
-// })
-//
-// btnPrev.addEventListener('click', () => {
-//     const itemsLeft = Math.abs(position) / itemWidth
-//
-//     position += itemsLeft >= sliderToScroll ? movePosition : itemsLeft * itemWidth
-//
-//     setPosition()
-//     checkBtns()
-// })
-//
-// const setPosition = () => {
-//     track.style.transform = `translateX(${ position }px)`
-// }
-//
-// const checkBtns = () => {
-//     btnPrev.disabled = position === 0
-//     btnNext.disabled = position <= -(itemsCount - sliderToShow) * itemWidth
-// }
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+const slider = document.querySelector('.slider')
+const sliderList = slider.querySelector('.slider-list')
+
+const changeImage = (event) => {
+    const target = event.target
+    if (!target.closest('button')) return
+    
+    if (target.classList.contains('slider-btn-prev')) slidePrev()
+    if (target.classList.contains('slider-btn-next')) slideNext()
+}
+
+const slidePrev = () => {
+    const images = Array.from(slider.querySelectorAll('.slider-item'))
+    const last   = images[images.length - 1]
+    sliderList.prepend(last)
+}
+
+const slideNext = () => {
+    const images = Array.from(slider.querySelectorAll('.slider-item'))
+    const first  = images[0]
+    sliderList.append(first)
+}
+
+slider.addEventListener('click', changeImage)
