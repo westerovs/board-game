@@ -1,3 +1,16 @@
+@font-face {
+    font-family: "a_Stamper Bold";
+    src: local('a_Stamper Bold'), local('a_Stamper-Bold'),
+        url("../fonts/a_Stamper Bold.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+}
+
+:root {
+    --color-point-start: #c60802;
+    --color-point-end: #036191;
+}
+
 *,
 ::before,
 ::after {
@@ -13,9 +26,9 @@
 .page-body {
     min-height: 100%;
     font-size: 18px;
-    font-family: Geometria, Arial, Helvetica, sans-serif;
+    font-family: 'a_Stamper Bold', Arial, Helvetica, sans-serif;
     background-color: #2c7580;
-    color: #ccc;
+    /*color: #ccc;*/
 }
 
 a {
@@ -30,6 +43,55 @@ img {
     display: block;
     max-width: 100%;
     height: auto;
+}
+
+.game__text-transform {
+    position: absolute;
+    transform-style: preserve-3d;
+    perspective: 500px;
+    width: min-content;
+    font-size: 16px;
+}
+
+.game__text-transform p {
+    line-height: 0.9;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: inherit;
+}
+
+.game__text-transform--start {
+    top: 512px;
+    left: 428px;
+    color: var(--color-point-start);
+}
+
+.game__text-transform--end {
+    top: 175px;
+    left: 860px;
+    color: var(--color-point-end);
+}
+
+.game__text-transform--start p {
+    transform: matrix(0.72699027316319, -0.4229733726024, 1.21570020235108, 0.66822240031415, 0, 0);
+}
+
+.game__text-transform--end p {
+    line-height: 0.4;
+    transform: matrix(0.85913596566587, -0.47326851487507, 1.08933457037137, 0.56388309305942, 0, 0);
+}
+
+button {
+    cursor: pointer;
+}
+
+.btn--action {
+    background-image: url("../img/controls/active-gradient.png");
+    background-repeat: repeat-x;
+}
+
+button:disabled {
+    cursor: not-allowed;
 }
 
 /*безопасное скрытие элемента*/
@@ -50,6 +112,7 @@ img {
     width: 980px;
     height: 630px;
     outline: 1px solid gray;
+    user-select: none;
 }
 
 .game__background {
@@ -73,9 +136,9 @@ img {
     position: absolute;
     bottom: 18px;
     display: flex;
+    gap: 0 8px;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
     padding: 0 4px;
 }
 
@@ -118,6 +181,7 @@ img {
 
 .slider-item--empty {
     background: gray;
+    cursor: not-allowed;
 }
 
 
@@ -160,4 +224,9 @@ img {
     background-image: url("../img/slider/controll-arrow.png");
     right: 0;
     transform: translateY(-50%) rotate(-180deg);
+}
+
+/* ==================== */
+.btn--action {
+    min-width: 202px;
 }

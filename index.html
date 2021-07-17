@@ -11,28 +11,24 @@
 
 <main id="game" class="game">
   <img class="game__background" width="980" height="605" src="./src/img/background-map.png" alt="игровое поле">
+
+  <div class="game__text-transform game__text-transform--start">
+    <p>первый<br>курс</p>
+  </div>
+
+  <div class="game__text-transform game__text-transform--end">
+    <p>выпускной</p>
+  </div>
+
   <div class="game__user"></div>
 
   <section class="game__controls">
 
     <div class="slider">
         <ul class="slider-list">
-          <li class="slider-item slider-item--active slider-item--add">1</li>
-          <li class="slider-item slider-item--active">2</li>
-          <li class="slider-item slider-item--active">3</li>
-          <li class="slider-item slider-item--active">4</li>
-          <li class="slider-item slider-item--active">5</li>
-          <li class="slider-item slider-item--active">6</li>
-          <li class="slider-item slider-item--empty">7</li>
-          <li class="slider-item slider-item--empty">8</li>
-          <li class="slider-item slider-item--empty">9</li>
-          <li class="slider-item slider-item--empty">10</li>
-          <li class="slider-item slider-item--empty">11</li>
-          <li class="slider-item slider-item--empty">12</li>
-          <li class="slider-item slider-item--empty">13</li>
-          <li class="slider-item slider-item--empty">14</li>
-          <li class="slider-item slider-item--empty">15</li>
-          <li class="slider-item slider-item--empty">16</li>
+          <template id="template-slider">
+            <li class="slider-item slider-item--active"></li>
+          </template>
         </ul>
 
       <button type="button" class="slider-btn slider-btn-prev" aria-label="предыдущий слайд"></button>
@@ -40,14 +36,15 @@
     </div>
 
 
-    <!--<button type="button" class="game__btn btn&#45;&#45;chat" aria-label="открыть чат"></button>-->
-    <!--<button type="button" class="game__btn btn&#45;&#45;action" aria-label="переход на позицию в универ"></button>-->
-    <!--<button type="button" class="game__btn btn&#45;&#45;message" aria-label="открыть сообщения"></button>-->
-    <!--<button type="button" class="game__btn btn-rating" aria-label="открыть рейтинг"></button>-->
+    <button type="button" disabled class="game__btn btn--chat" aria-label="открыть чат">чат</button>
+    <button type="button" class="game__btn btn--action" aria-label="переход на позицию в универ">в универ</button>
+    <button type="button" class="game__btn btn--message" aria-label="открыть сообщения">msg</button>
+    <button type="button" class="game__btn btn-rating" aria-label="открыть рейтинг">rating</button>
   </section>
-
 </main>
 
-<script src="src/js/index.js"></script>
+<script type="module" src="src/js/rating.js"></script>
+<script type="module" src="src/js/slider.js"></script>
+<script type="module" src="src/js/index.js"></script>
 </body>
 </html>
