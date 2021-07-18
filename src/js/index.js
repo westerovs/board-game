@@ -7,9 +7,12 @@ const control = new Control(gameControls)
 const slider = new Slider()
 slider.init()
 
-
-
+// const path = document.querySelectorAll('path')
+// function getPathLength(node) {
+//     node.forEach(item => {
+//         item.style.strokeDasharray = `${ Math.trunc(item.getTotalLength()) }`
+//         item.style.strokeDashoffset = `${ Math.trunc(item.getTotalLength()) }`
+//     })
+// }
 //
-// // const slider = new Slider()
-//
-// console.log(slider)
+// getPathLength(path)

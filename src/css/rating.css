@@ -1,0 +1,155 @@
+.rating {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 523px;
+    height: 455px;
+    border-radius: 20px;
+
+    background: #c08342;
+    color: white;
+    z-index: 100;
+}
+
+.rating-hide {
+    display: none;
+}
+
+.rating__title {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 264px;
+    height: 33px;
+    line-height: 33px;
+
+    font-size: 26px;
+    font-family: Arial, sans-serif;
+    color: white;
+    background-color: blue;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.rating__close {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    border-radius: 5px;
+    width: 26px;
+    height: 26px;
+    background: blue;
+}
+
+/*.rating::before {*/
+/*    content: url("../img/popup.png");*/
+/*    position: absolute;*/
+/*    top: -80px;*/
+/*    left: -241px;*/
+/*    !*width: 2160px;*!*/
+/*    !*height: 3840px;*!*/
+/*    background-image: url("../img/popup.png");*/
+/*    background-repeat: no-repeat;*/
+/*    pointer-events: none;*/
+/*    opacity: 0.4;*/
+/*    z-index: 333;*/
+/*}*/
+
+.rating__body {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 464px;
+    height: 324px;
+    padding: 32px;
+    border-radius: 20px;
+    overflow-y: auto;
+    font-family: Arial, sans-serif;
+    background-color: #8C5A31;
+
+}
+
+.rating-header {
+    display: grid;
+    grid-template-columns: 67px 1fr 80px;
+    height: 30px;
+    margin-bottom: 7px;
+    border-radius: 10px;
+    background-color: blue;
+    color: white;
+}
+
+/* header */
+
+.rating-header-text {
+    font-size: 14px;
+    line-height: 30px;
+}
+
+.rating__header-place {
+    text-align: center;
+}
+
+.rating__header-name {
+    padding-left: 32px;
+}
+
+/* rating list */
+
+.rating__list {
+
+}
+
+.rating__item {
+    display: grid;
+    grid-template-columns: 67px 30px 1fr min-content;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    background-color: #3FA3BC;
+}
+
+.rating__item:last-child {
+    margin-bottom: 0;
+}
+
+.rating__item-place {
+    text-align: center;
+}
+
+.rating__item-img {
+    width: 30px;
+    height: 30px;
+    background-color: #9D4516;
+}
+
+.rating__item-score {
+    min-width: 80px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
