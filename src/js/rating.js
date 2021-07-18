@@ -6,24 +6,22 @@ export default class Rating {
     }
     
     showPopUp = () => {
-        this.rating.classList.toggle('rating-hide')
+        this.rating.classList.remove('rating-hide')
     }
     
     closePopUp = () => {
         window.addEventListener('keydown', (event) => {
-            this.clearRatingList()
-    
             if (event.code === 'Escape') {
                 if (!this.rating.classList.contains('rating-hide')) {
+                    this.destroy()
                     this.rating.classList.add('rating-hide');
                 }
             }
         }, { once: true });
-    }
     
-    handleClick = () => {
-        this.clearRatingList()
-        this.rating.classList.add('rating-hide')
+        this.rating.addEventListener('click', (event) => {
+            if (!event.target.closest('.rating-container')) this.destroy()
+        });
     }
     
     render = (element, template, place = 'beforeend') => {
@@ -59,14 +57,15 @@ export default class Rating {
         }
     }
     
-    clearRatingList = () => {
+    destroy = () => {
         this.ratingList.innerHTML = ''
+        this.rating.classList.add('rating-hide')
     }
     
     init = () => {
         this.showPopUp()
         this.closePopUp()
-        this.btnClose.addEventListener('click', this.handleClick)
+        this.btnClose.addEventListener('click', this.destroy)
         
         this.getResponse()
         console.log('init rating')

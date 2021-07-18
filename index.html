@@ -84,22 +84,22 @@
   </section>
 
   <section class="rating rating-hide">
-    <button type="button" class="rating__close">X</button>
-    <h2 class="rating__title">Рейтинг игроков</h2>
+    <div class="rating-container">
+      <button type="button" class="rating__close" aria-label="закрыть окно рейтинга"></button>
+      <h2 class="rating__title">Рейтинг игроков</h2>
 
-    <div class="rating__body">
-      <div class="rating-header">
-        <p class="rating-header-text rating__header-place">место</p>
-        <p class="rating-header-text rating__header-name">Имя Фамилия</p>
-        <p class="rating-header-text rating__header-experience">Опыт</p>
+      <div class="rating__body">
+        <div class="rating-header">
+          <div class="rating-header-row">
+            <p class="rating-header-text rating__header-place">Место</p>
+            <p class="rating-header-text rating__header-name">Имя Фамилия</p>
+            <p class="rating-header-text rating__header-experience">Опыт</p>
+          </div>
+        </div>
+        <ul class="rating__list"></ul>
       </div>
-
-      <ul class="rating__list">
-
-      </ul>
     </div>
   </section>
-
 </main>
 
 

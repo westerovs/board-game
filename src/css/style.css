@@ -244,26 +244,3 @@ svg {
     left: 80px;
     z-index: 1;
 }
-
-
-/*path {*/
-/*    animation-name: active-path;*/
-/*    animation-fill-mode: forwards;*/
-/*    animation-duration: 5s;*/
-/*    animation-timing-function: linear;*/
-/*    !*animation-iteration-count: infinite;*!*/
-
-/*    stroke: none;*/
-/*    fill: none;*/
-
-/*    !*stroke-dasharray: 500;*!*/
-/*    !*stroke-dashoffset: 500;*!*/
-/*}*/
-
-/*@keyframes active-path {*/
-/*    100% {*/
-/*        stroke: red;*/
-/*        fill: blue;*/
-/*        stroke-dashoffset: 0;*/
-/*    }*/
-/*}*/
