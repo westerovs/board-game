@@ -31,7 +31,7 @@
     font-family: 'a_Stamper Bold', Arial, Helvetica, sans-serif;
     background-color: #2c7580;
     overflow: hidden;
-    /*user-select: none;*/
+    /*player-select: none;*/
     /*color: #ccc;*/
 }
 
@@ -55,7 +55,7 @@ img {
     width: 980px;
     height: 630px;
     outline: 1px solid gray;
-    /*user-select: none;*/
+    /*player-select: none;*/
 }
 
 .game__text-transform {
@@ -242,52 +242,37 @@ button:disabled {
     z-index: 1;
 }
 
+
+
 /* ======================================== */
 /* ======================================== */
 /* ============ генератор карт ============ */
 /* ======================================== */
 /* ======================================== */
-
-svg {
+.game__svg-path {
     position: absolute;
     top: 0;
     left: 0;
-    outline: 2px dashed red;
 }
 
-.user {
+.player {
     position: absolute;
-    left: 0;
-    width: 10px;
-    height: 70px;
-    background-color: blue;
-    /* transition: 10s; */
-}
-
-/* 1086 */
-path {
-    animation-name: active-path;
-    animation-fill-mode: forwards;
-    animation-duration: 5s;
-    animation-direction: reverse;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    stroke: red;
-
-    stroke-dasharray: 4553;
-    /* stroke-dashoffset: 0; */
-
-}
-
-g {
-    outline: 2px dashed red;
+    top: 395px;
+    left: 482px;
+    width: 21px;
+    height: 69px;
+    cursor: pointer;
+    transform: translateY(-50px);
 }
 
 .map-point {
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 10px;
     border-radius: 50%;
-    background-color: black;
+    background-color: greenyellow;
 }
 
+.map-point--checkpoint {
+    background-color: red;
+}
