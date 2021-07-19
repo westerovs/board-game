@@ -1,10 +1,16 @@
 /*
-массив с кооринатами точек / комнат
 Сперва я получил длинну SVG, потом достаточно задать интересующий отрезок пути
 и можно на нём рендерить объекты.
 При желании можно автоматизировать процесс и рендерить точки с равными расстояниями
 Иконка игрока привязана к координатам пути.
+
+надо бы разделить пользователя и генератор карт.. но пока так.
+пользователь получает координаты и движется.
+временно движение такое топорное. Не успел прикрутить requestAnimationFrame.
+да и анимировать правильнее на трансформациях, а не на top/left.
 */
+
+// массив с кооринатами точек / комнат. Нужно вынести отсюда в данные
 const pointsMap = [
     { location: 10, room: true },
     { location: 120 },
@@ -63,19 +69,22 @@ const pointsMap = [
 
 export default class GeneratorMap {
     constructor(step = 1) {
-        this.startStep = step
-        
         this.path = document.querySelector('#path-map')
         this.wrapper = document.querySelector('#game')
         this.player = document.querySelector('.player')
         this.btnAction = document.querySelector('.btn--action')
+    
+        this._PATH_TOTAL_LENGTH = Math.trunc(this.path.getTotalLength())
+        this.startStep = step
     }
     
-    changeUserPosition = (pathPoint) => {
-        // надо бы разделить пользователя и генератор карт.. но пока так.
-        // пользователь получает координаты и движется.
-        // временно движение такое топорное. Не успел прикрутить requestAnimationFrame.
-        // да и анимировать правильнее на трансформациях, а не на top/left.
+    changeUserPosition = (pathPoint, nextPoint) => {
+
+        
+        // nextPositions - понадобится для плавной анимации по path. Пока off
+        // const nextPositionX = Math.trunc(this.path.getPointAtLength(nextPoint).x)
+        // const nextPositionY = Math.trunc(this.path.getPointAtLength(nextPoint).y)
+    
         this.player.style.left = `${ Math.trunc(this.path.getPointAtLength(pathPoint).x) }px`
         this.player.style.top = `${ Math.trunc(this.path.getPointAtLength(pathPoint).y) }px`
     }
@@ -106,7 +115,7 @@ export default class GeneratorMap {
         allPoints[step - 1].classList.add('map-point--completed')
     }
     
-    move = () => {
+    moveUser = () => {
         const lastPoint = pointsMap.length - 1
         
         // проверка, что бы не тыкали, пока идёт анимация
@@ -118,7 +127,7 @@ export default class GeneratorMap {
         })
         
         // изменение позиции. При каждом клике, счётчик++ и выбирается след. локация в массиве
-        this.changeUserPosition(pointsMap[this.startStep].location)
+        this.changeUserPosition(pointsMap[this.startStep].location, pointsMap[this.startStep + 1].location)
         this.getCompletedPath()
         
         // если счётчик равен длиннне всех локаций, игра окончена
@@ -131,7 +140,7 @@ export default class GeneratorMap {
     }
     
     init = (startPosition = 0) => {
-        this.changeUserPosition(pointsMap[startPosition].location)
+        this.changeUserPosition(pointsMap[startPosition].location, pointsMap[this.startStep + 1].location)
         this.generatePoints()
     }
 }

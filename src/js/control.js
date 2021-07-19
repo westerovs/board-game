@@ -15,7 +15,7 @@ export default class Control {
     }
     
     openAction = () => {
-        this.generatorMap.move()
+        this.generatorMap.moveUser()
     }
     
     openMessage = () => {

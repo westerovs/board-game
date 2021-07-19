@@ -30,9 +30,7 @@
     font-size: 18px;
     font-family: 'a_Stamper Bold', Arial, Helvetica, sans-serif;
     background-color: #2c7580;
-    /*overflow: hidden;*/
-    /*player-select: none;*/
-    /*color: #ccc;*/
+    user-select: none;
 }
 
 a {
@@ -54,7 +52,6 @@ img {
     margin: 100px auto;
     width: 980px;
     height: 630px;
-    overflow: hidden;
     box-shadow: 0 0 15px black;
     /*player-select: none;*/
 }
@@ -132,6 +129,10 @@ button:disabled {
     border-radius: 10px;
     background-color: #54B3C1;
     box-shadow: 2px 2px 2px black;
+}
+
+.btn--action:disabled {
+    background: gray;
 }
 
 /* =================================*/
@@ -305,6 +306,7 @@ button:disabled {
     border-radius: 50%;
     background-color: black;
     box-shadow: 0 0 10px white;
+    transition: background-color 1s;
 }
 
 .map-point--room {
