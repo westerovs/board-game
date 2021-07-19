@@ -235,11 +235,7 @@ button:disabled {
     min-width: 202px;
 }
 
-svg {
-    outline: 2px dashed red;
-}
-
-.svg-path {
+.game-path {
     position: absolute;
     top: 20px;
     left: 80px;

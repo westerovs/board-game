@@ -1,18 +1,17 @@
 import Slider from './slider.js'
 import Control from './control.js'
 
-const gameControls = document.querySelector('#game-controls')
-const control = new Control(gameControls)
+class Game {
+    constructor() {
+        this.gameControls = document.querySelector('#game-controls')
+        this.control = new Control(this.gameControls)
+        this.slider = new Slider()
+    }
+    
+    start = () => {
+        this.slider.init()
+    }
+}
 
-const slider = new Slider()
-slider.init()
-
-// const path = document.querySelectorAll('path')
-// function getPathLength(node) {
-//     node.forEach(item => {
-//         item.style.strokeDasharray = `${ Math.trunc(item.getTotalLength()) }`
-//         item.style.strokeDashoffset = `${ Math.trunc(item.getTotalLength()) }`
-//     })
-// }
-//
-// getPathLength(path)
+const game = new Game()
+game.start()
