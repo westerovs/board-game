@@ -49,7 +49,9 @@ export default class Rating {
             getResponse()
                 .then((data) => {
                     data.sort((a, b) => b.experience - a.experience)
-                        .forEach((params, i) => this.render(this.ratingList, this.template(params, i + 1)))
+                        .forEach((params, i) => {
+                            this.render(this.ratingList, this.template(params, i + 1))
+                        })
                 })
         } catch (err) {
             console.log(err)

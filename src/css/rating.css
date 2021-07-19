@@ -14,7 +14,7 @@
 
 .rating-container {
     position: absolute;
-    top: 50%;
+    top: -100%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 523px;
@@ -23,6 +23,20 @@
     border: 6px solid #8A5E2E;
     background: #c08342;
     color: white;
+
+    animation-name: show-popup;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.42, 0, 0.58, 2)
+}
+
+@keyframes show-popup {
+    0% {
+        top: -100%;
+    }
+    100% {
+        top: 50%;
+    }
 }
 
 .rating__title {
@@ -128,6 +142,7 @@
     border-radius: 10px;
     background-color: #3FA3BC;
 }
+
 
 .rating__item-place {
     text-align: center;
