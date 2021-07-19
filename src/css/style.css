@@ -255,6 +255,12 @@ button:disabled {
     left: 0;
 }
 
+.game__background-path {
+    position: absolute;
+    top: 24px;
+    left: 82px;
+}
+
 .player {
     position: absolute;
     top: 395px;
@@ -263,6 +269,7 @@ button:disabled {
     height: 69px;
     cursor: pointer;
     transform: translateY(-50px);
+    z-index: 1;
 }
 
 .map-point {
@@ -270,9 +277,46 @@ button:disabled {
     width: 16px;
     height: 10px;
     border-radius: 50%;
-    background-color: greenyellow;
+    background-color: black;
+    box-shadow: 0 0 10px white;
 }
 
-.map-point--checkpoint {
+.map-point--room {
+    position: absolute;
+    width: 16px;
+    height: 10px;
+    border-radius: 50%;
     background-color: red;
+}
+
+.map-point--room:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+
+    width: inherit;
+    height: inherit;
+    border: 1px solid red;
+    border-radius: inherit;
+
+    animation-name: scale-point;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+}
+
+@keyframes scale-point {
+    0% {
+        transform: scale(1.5);
+    }
+    50% {
+        transform: scale(2);
+    }
+    100% {
+        transform: scale(1.5);
+    }
 }

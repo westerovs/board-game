@@ -1,10 +1,13 @@
 import Rating from './rating.js'
+import GeneratorMap from './generatorMap.js'
+
 export default class Control {
     constructor(elem) {
         this._elem = elem;
         elem.onclick = this.onClick.bind(this);
         
         this.rating = new Rating()
+        this.generatorMap = new GeneratorMap()
     }
     
     openChat = () => {
@@ -12,11 +15,12 @@ export default class Control {
     }
     
     openAction = () => {
-        console.log('action');
+        this.generatorMap.move()
     }
     
     openMessage = () => {
         console.log('message');
+        
     }
     
     openRating = () => {

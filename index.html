@@ -10,15 +10,14 @@
 <body class="page-body">
 
 <main id="game" class="game">
-	<img class="game__background" width="980" height="605" src="./src/img/testmap.jpg" alt="игровое поле">
+	<img class="game__background" width="980" height="605" src="./src/img/background-map.png" alt="игровое поле">
+	<img class="game__background-path" width="898" height="523" src="./src/img/game-path.png" alt="линия движения игрока">
   <img class="player" width="21" height="69" src="./src/img/player/player-female.png" alt="иконка игрока">
 
   <!-- невидимый path, который дублирует путь нарисованного дизайнером -->
 	<svg class="game__svg-path" width="980" height="605" xmlns="http://www.w3.org/2000/svg">
 			<path id="path-map"
-						opacity="0.5"
-						fill-opacity="null"
-						stroke-opacity="null"
+						opacity="0"
 						stroke-width="6"
 						stroke="blue"
 						fill="none"
@@ -81,7 +80,7 @@
 </main>
 
 
-<script type="module" src="src/js/generator-map.js"></script>
+<script type="module" src="src/js/generatorMap.js"></script>
 <script type="module" src="src/js/rating.js"></script>
 <script type="module" src="src/js/slider.js"></script>
 <script type="module" src="src/js/index.js"></script>
