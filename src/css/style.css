@@ -30,7 +30,7 @@
     font-size: 18px;
     font-family: 'a_Stamper Bold', Arial, Helvetica, sans-serif;
     background-color: #2c7580;
-    overflow: hidden;
+    /*overflow: hidden;*/
     /*player-select: none;*/
     /*color: #ccc;*/
 }
@@ -54,7 +54,8 @@ img {
     margin: 100px auto;
     width: 980px;
     height: 630px;
-    outline: 1px solid gray;
+    overflow: hidden;
+    box-shadow: 0 0 15px black;
     /*player-select: none;*/
 }
 
@@ -263,13 +264,38 @@ button:disabled {
 
 .player {
     position: absolute;
-    top: 395px;
-    left: 482px;
+    top: 502px;
+    left: 438px;
     width: 21px;
     height: 69px;
     cursor: pointer;
-    transform: translateY(-50px);
+    transform: translateY(-60px);
+    transition: top 1s, left 1s, transform 0.5s;
+    object-fit: cover;
+    object-position: 0 center;
     z-index: 1;
+
+    animation-name: player-waiting;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+}
+
+.player:hover {
+    transform: translateY(-70px);
+    object-position: -22px center;
+}
+
+@keyframes player-waiting {
+    0% {
+        transform: translateY(-60px);
+    }
+    50% {
+        transform: translateY(-70px);
+    }
+    100% {
+        transform: translateY(-60px);
+    }
 }
 
 .map-point {
@@ -300,7 +326,7 @@ button:disabled {
 
     width: inherit;
     height: inherit;
-    border: 1px solid red;
+    border: 2px solid red;
     border-radius: inherit;
 
     animation-name: scale-point;
@@ -309,14 +335,18 @@ button:disabled {
     animation-fill-mode: forwards;
 }
 
+.map-point--completed {
+    background-color: greenyellow;
+}
+
 @keyframes scale-point {
     0% {
-        transform: scale(1.5);
+        transform: scale(1.6);
     }
     50% {
         transform: scale(2);
     }
     100% {
-        transform: scale(1.5);
+        transform: scale(1.6);
     }
 }

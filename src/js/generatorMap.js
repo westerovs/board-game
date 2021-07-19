@@ -1,3 +1,10 @@
+/*
+массив с кооринатами точек / комнат
+Сперва я получил длинну SVG, потом достаточно задать интересующий отрезок пути
+и можно на нём рендерить объекты.
+При желании можно автоматизировать процесс и рендерить точки с равными расстояниями
+Иконка игрока привязана к координатам пути.
+*/
 const pointsMap = [
     { location: 10, room: true },
     { location: 120 },
@@ -9,102 +16,122 @@ const pointsMap = [
     { location: 645 },
     { location: 780 },
     { location: 860 },
-    { location: 980, room: true  },
+    { location: 980, room: true },
     { location: 1050 },
     { location: 1130 },
     { location: 1230 },
     { location: 1310 },
-    { location: 1410, room: true  },
+    { location: 1410, room: true },
     { location: 1520 },
     { location: 1620 },
     { location: 1740 },
-    { location: 1820, room: true  },
+    { location: 1820, room: true },
     { location: 1900 },
     { location: 1990 },
     { location: 2070 },
     { location: 2150 },
-    { location: 2270, room: true  },
+    { location: 2270, room: true },
     { location: 2390 },
     { location: 2510 },
     { location: 2600 },
     { location: 2680 },
-    { location: 2760, room: true  },
+    { location: 2760, room: true },
     { location: 2840 },
     { location: 2910 },
     { location: 2980 },
     { location: 3060 },
     { location: 3130 },
-    { location: 3220, room: true  },
+    { location: 3220, room: true },
     { location: 3310 },
     { location: 3360 },
     { location: 3445 },
     { location: 3520 },
     { location: 3600 },
-    { location: 3660, room: true  },
+    { location: 3660, room: true },
     { location: 3720 },
     { location: 3790 },
     { location: 3850 },
     { location: 3950 },
     { location: 4015 },
-    { location: 4080, room: true  },
+    { location: 4080, room: true },
     { location: 4180 },
     { location: 4290 },
     { location: 4390 },
     { location: 4470 },
-    { location: 4580, room: true  },
+    { location: 4580, room: true },
 ]
 
 export default class GeneratorMap {
     constructor(step = 1) {
         this.startStep = step
-    
+        
         this.path = document.querySelector('#path-map')
         this.wrapper = document.querySelector('#game')
-        this.player = document.querySelector('.player');
-        this.pathTotalLength = Math.trunc(this.path.getTotalLength())
+        this.player = document.querySelector('.player')
+        this.btnAction = document.querySelector('.btn--action')
     }
     
-    getStartPosition = (pathPoint) => {
-        this.player.style.left = `${ this.path.getPointAtLength(pathPoint).x}px`
-        this.player.style.top  = `${ this.path.getPointAtLength(pathPoint).y}px`
+    changeUserPosition = (pathPoint) => {
+        // надо бы разделить пользователя и генератор карт.. но пока так.
+        // пользователь получает координаты и движется.
+        // временно движение такое топорное. Не успел прикрутить requestAnimationFrame.
+        // да и анимировать правильнее на трансформациях, а не на top/left.
+        this.player.style.left = `${ Math.trunc(this.path.getPointAtLength(pathPoint).x) }px`
+        this.player.style.top = `${ Math.trunc(this.path.getPointAtLength(pathPoint).y) }px`
     }
     
-    changePosition = (pathPoint) => {
-        this.player.style.transition = '1s'
-
-        this.player.style.left = `${ this.path.getPointAtLength(pathPoint).x}px`
-        this.player.style.top  = `${ this.path.getPointAtLength(pathPoint).y}px`
-    }
-    
-     createPoint = (pathPoint) => {
+    createPoint = (pathPoint) => {
+        // герерит черные и красные точки
         const { location, room } = pathPoint
         const point = document.createElement('div')
         
-        point.style.left = `${ this.path.getPointAtLength(location).x}px`
-        point.style.top  = `${ this.path.getPointAtLength(location).y}px`
-
-        point.classList.add(`${ room ? 'map-point--room' : 'map-point'}`)
+        point.style.left = `${ Math.trunc(this.path.getPointAtLength(location).x) }px`
+        point.style.top = `${ Math.trunc(this.path.getPointAtLength(location).y) }px`
+        
+        // если это комната, то доп.класс точка красная
+        if (room) point.classList.add('map-point', 'map-point--room')
+        point.classList.add('map-point')
+        
+        point.setAttribute('tabindex', '1')
         this.wrapper.append(point)
     }
-
-     generatePoints = () => {
+    
+    generatePoints = () => {
         pointsMap.forEach(item => this.createPoint(item))
+    }
+    
+    // отмечает пройденные точки цветом
+    getCompletedPath = (step = this.startStep) => {
+        const allPoints = document.querySelectorAll('.map-point')
+        allPoints[step - 1].classList.add('map-point--completed')
     }
     
     move = () => {
         const lastPoint = pointsMap.length - 1
-        this.changePosition(pointsMap[this.startStep].location)
-    
+        
+        // проверка, что бы не тыкали, пока идёт анимация
+        this.player.addEventListener('transitionstart', (e) => {
+            if (e.propertyName === 'top') this.btnAction.disabled = true
+        })
+        this.player.addEventListener('transitionend', (e) => {
+            if (e.propertyName === 'top') this.btnAction.disabled = false
+        })
+        
+        // изменение позиции. При каждом клике, счётчик++ и выбирается след. локация в массиве
+        this.changeUserPosition(pointsMap[this.startStep].location)
+        this.getCompletedPath()
+        
+        // если счётчик равен длиннне всех локаций, игра окончена
         if (this.startStep >= lastPoint) {
             console.log('CONGRATULATIONS YOU WIN !')
             return
         }
-    
+        
         this.startStep++
     }
     
     init = (startPosition = 0) => {
-        this.getStartPosition(pointsMap[startPosition].location)
+        this.changeUserPosition(pointsMap[startPosition].location)
         this.generatePoints()
     }
 }
