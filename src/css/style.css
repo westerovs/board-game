@@ -241,3 +241,53 @@ button:disabled {
     left: 80px;
     z-index: 1;
 }
+
+/* ======================================== */
+/* ======================================== */
+/* ============ генератор карт ============ */
+/* ======================================== */
+/* ======================================== */
+
+svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    outline: 2px dashed red;
+}
+
+.user {
+    position: absolute;
+    left: 0;
+    width: 10px;
+    height: 70px;
+    background-color: blue;
+    /* transition: 10s; */
+}
+
+/* 1086 */
+path {
+    animation-name: active-path;
+    animation-fill-mode: forwards;
+    animation-duration: 5s;
+    animation-direction: reverse;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    stroke: red;
+
+    stroke-dasharray: 4553;
+    /* stroke-dashoffset: 0; */
+
+}
+
+g {
+    outline: 2px dashed red;
+}
+
+.map-point {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: black;
+}
+
