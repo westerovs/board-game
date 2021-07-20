@@ -128,7 +128,6 @@ export default class GeneratorMap {
     
             // если счётчик равен длине всех локаций, игра окончена
             if (this.startStep >= lastPoint) {
-                this.changeUserPosition(pointsMap[this.startStep].location, pointsMap[this.startStep + 1].location)
                 console.log('CONGRATULATIONS YOU WIN !')
                 return
             }
