@@ -35,14 +35,15 @@ export default class Rating {
     }
     
     template = (params, i, isFriend) => {
-        `
-        <li class="rating__item">
+        const { id, name, lastName, img, points } = params
+        
+        return (`
+        <li class="rating__item ${ isFriend ? 'rating__item--friend' : '' }" id="${ id }">
           <p class="rating__item-text rating__item-place">${ i }</p>
           <img class="rating__item-img" width="30" height="30" src="https://via.placeholder.com/30x30" alt="#">
-          <p class="rating__item-text rating__item-name">${ params.name }</p>
-          <p class="rating__item-text rating__item-score">${ Math.trunc(params.points) }</p>
-        </li>
-    `
+          <p class="rating__item-text rating__item-name">${ name } ${ lastName }</p>
+          <p class="rating__item-text rating__item-score">${ Math.trunc(points) }</p>
+        </li>`)
     }
     
     getResponse = () => {
@@ -52,10 +53,19 @@ export default class Rating {
             }
         
             getResponse()
-                .then(data => {
-                    data.forEach((params, i) => {
-                            this.render(this.ratingList, this.template(params, i + 1))
+                .then(sortPointsUsers => {
+                    const friendsId = this.dataFriends.map(friend => friend.id)
+                    
+                    let isFriend = false
+                    
+                    sortPointsUsers.forEach((params, i) => {
+                        friendsId.forEach(friend => {
+                            if (friend === params.id) isFriend = params.id
                         })
+                        this.render(this.ratingList, this.template(params, i + 1, isFriend))
+                        
+                        isFriend = null
+                    })
                 })
         } catch (err) {
             console.log(err)
@@ -74,6 +84,5 @@ export default class Rating {
         this.btnClose.addEventListener('click', this.destroy)
         
         this.getResponse()
-        console.log('init rating')
     }
 }

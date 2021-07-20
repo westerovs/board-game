@@ -186,15 +186,21 @@ button:disabled {
 /* =================================*/
 .slider {
     position: relative;
-    background: black;
     padding: 0 30px;
     border-radius: 10px;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url("../img/slider/slider-cover.png");
 }
 
 .slider-list {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 0 10px;
+    padding-left: 60px;
     max-width: 470px;
     min-height: 64px;
     overflow: hidden;
@@ -212,29 +218,32 @@ button:disabled {
     height: 50px;
     background-color: #9D4516;
     border-radius: 10px;
-    /*background-repeat: no-repeat;*/
-    /*background-position: center;*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../img/slider/item-active.png");
     cursor: pointer;
 }
 
 .slider-item--empty {
-    background: gray;
     cursor: not-allowed;
+    background-image: url("../img/slider/item-empty.png");
 }
 
+.slider-item-add {
+    position: absolute;
+    left: 0;
+}
 
-/*.slider-item--active {*/
-/*    background-image: url("../img/slider/item-active.png");*/
-/*}*/
-
-.slider-item--add::before {
+.slider-item-add::before {
     content: "";
     position: absolute;
     top: -4px;
     right: -6px;
-    width: 22px;
+    width: 23px;
     height: 22px;
-    border: 1px solid green;
+    background-image: url("../img/slider/add.png");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .slider-btn {
@@ -243,14 +252,13 @@ button:disabled {
     transform: translateY(-50%);
     width: 14px;
     height: 100%;
-    padding: 0 20px 0 5px;
+    padding: 0 28px 0 5px;
 
     border: none;
     background-color: transparent;
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
-    /*outline: 2px dashed red;*/
 }
 
 .slider-btn-prev {

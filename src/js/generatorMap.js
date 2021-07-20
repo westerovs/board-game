@@ -116,27 +116,35 @@ export default class GeneratorMap {
     }
     
     moveUser = () => {
-        const lastPoint = pointsMap.length - 1
-        
-        // проверка, что бы не тыкали, пока идёт анимация
-        this.player.addEventListener('transitionstart', (e) => {
-            if (e.propertyName === 'top') this.btnAction.disabled = true
-        })
-        this.player.addEventListener('transitionend', (e) => {
-            if (e.propertyName === 'top') this.btnAction.disabled = false
-        })
-        
-        // изменение позиции. При каждом клике, счётчик++ и выбирается след. локация в массиве
-        this.changeUserPosition(pointsMap[this.startStep].location, pointsMap[this.startStep + 1].location)
-        this.getCompletedPath()
-        
-        // если счётчик равен длиннне всех локаций, игра окончена
-        if (this.startStep >= lastPoint) {
-            console.log('CONGRATULATIONS YOU WIN !')
-            return
+        try {
+            const lastPoint = pointsMap.length - 1
+    
+            // проверка, что бы не тыкали, пока идёт анимация
+            this.player.addEventListener('transitionstart', (e) => {
+                if (e.propertyName === 'top') this.btnAction.disabled = true
+            })
+            this.player.addEventListener('transitionend', (e) => {
+                if (e.propertyName === 'top') this.btnAction.disabled = false
+            })
+    
+            // если счётчик равен длине всех локаций, игра окончена
+            if (this.startStep >= lastPoint) {
+                this.changeUserPosition(pointsMap[this.startStep].location, pointsMap[this.startStep + 1].location)
+                console.log('CONGRATULATIONS YOU WIN !')
+                return
+            }
+    
+            // изменение позиции. При каждом клике, счётчик++ и выбирается след. локация в массиве
+            this.changeUserPosition(pointsMap[this.startStep].location, pointsMap[this.startStep + 1].location)
+            this.getCompletedPath()
+    
+    
+            this.startStep++
+        }
+        catch (e) {
+            console.log(e)
         }
         
-        this.startStep++
     }
     
     init = (startPosition = 0) => {

@@ -24,7 +24,6 @@ export default class Control {
     }
     
     openRating = () => {
-        console.log('rating');
         this.rating.init()
     }
     

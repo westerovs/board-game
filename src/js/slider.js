@@ -6,27 +6,21 @@ export default class Slider {
         this.sliderList = this.slider.querySelector('.slider-list')
         this.templateElem = this.slider.querySelector('#template-slider')
         this.mockFriends = [
-            { id: 1, empty: false },
-            { id: 2, empty: false },
-            { id: 3, empty: false },
-            { id: 4, empty: false },
-            { id: 5, empty: false },
-            { id: 6, empty: false },
-            { id: 7, empty: true },
-            { id: 8, empty: true },
-            { id: 9, empty: true },
-            { id: 10, empty: true },
-            { id: 11, empty: true },
-            { id: 12, empty: true },
-            { id: 13, empty: true },
-            { id: 14, empty: true },
-            { id: 15, empty: true },
-            { id: 16, empty: true },
+            { empty: false },
+            { empty: false },
+            { empty: false },
+            { empty: false },
+            { empty: false },
+            { empty: false },
+            { empty: true },
+            { empty: true },
+            { empty: true },
+            { empty: true },
         ]
     }
     
     createSlide = (params) => {
-        const { id, empty } = params
+        const { empty } = params
         
         const slide = this.templateElem.content.cloneNode(true);
         const slideItem = slide.querySelector('li')
@@ -34,7 +28,6 @@ export default class Slider {
         if (!empty) this.addTodoListeners(slide)
         if (empty) slideItem.classList.add('slider-item--empty')
         
-        slideItem.innerHTML = id
         this.sliderList.append(slide);
     }
     
