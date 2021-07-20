@@ -136,7 +136,7 @@ export default class GeneratorMap {
             this.changeUserPosition(pointsMap[this.startStep].location, pointsMap[this.startStep + 1].location)
             this.getCompletedPath()
     
-    
+
             this.startStep++
         }
         catch (e) {
