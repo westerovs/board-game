@@ -27,7 +27,7 @@
     animation-name: show-popup;
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
-    animation-timing-function: cubic-bezier(0.42, 0, 0.58, 2)
+    animation-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
 @keyframes show-popup {

@@ -96,11 +96,6 @@ button {
     cursor: pointer;
 }
 
-.btn--action {
-    background-image: url("../img/controls/active-gradient.png");
-    background-repeat: repeat-x;
-}
-
 button:disabled {
     cursor: not-allowed;
 }
@@ -126,13 +121,13 @@ button:disabled {
 .game__btn {
     min-width: 65px;
     height: 60px;
-    border-radius: 10px;
-    background-color: #54B3C1;
-    box-shadow: 2px 2px 2px black;
+    background-color: transparent;
+    border: none;
+    color: white;
 }
 
-.btn--action:disabled {
-    background: gray;
+.game__btn:not(:disabled):hover {
+    filter: brightness(1.2);
 }
 
 /* =================================*/
@@ -148,6 +143,43 @@ button:disabled {
     padding: 0 4px;
 }
 
+.game__controls-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 8px;
+}
+
+.game__btn {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.btn--chat {
+    background-image: url("../img/controls/bg-chat--active.png");
+}
+
+.btn--chat:disabled {
+    background-image: url("../img/controls/bg-chat--disabled.png");
+}
+
+.btn--action {
+    min-width: 202px;
+    font-size: 25px;
+    background-image: url("../img/controls/bg-action.png");
+}
+
+.btn--action:disabled {
+    background-image: url("../img/controls/bg-action--disabled.png");
+}
+
+.btn--message {
+    background-image: url("../img/controls/bg-message.png");
+}
+
+.btn-rating {
+    background-image: url("../img/controls/bg-rating.png");
+}
 
 /* =================================*/
 /* ============ slider ============ */
@@ -230,11 +262,6 @@ button:disabled {
     background-image: url("../img/slider/controll-arrow.png");
     right: 0;
     transform: translateY(-50%) rotate(-180deg);
-}
-
-/* ==================== */
-.btn--action {
-    min-width: 202px;
 }
 
 .game-path {

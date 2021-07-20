@@ -1,8 +1,12 @@
+import {data} from './mock/data.js'
+
 export default class Rating {
     constructor() {
         this.rating = document.querySelector('.rating')
         this.ratingList = this.rating.querySelector('.rating__list')
         this.btnClose = this.rating .querySelector('.rating__close')
+        this.dataRating = data.rating
+        this.dataFriends = data.friends
     }
     
     showPopUp = () => {
@@ -30,26 +34,26 @@ export default class Rating {
         }
     }
     
-    template = (params, i) => (`
+    template = (params, i, isFriend) => {
+        `
         <li class="rating__item">
           <p class="rating__item-text rating__item-place">${ i }</p>
-          <img class="rating__item-img" src="https://via.placeholder.com/30x30" alt="#">
+          <img class="rating__item-img" width="30" height="30" src="https://via.placeholder.com/30x30" alt="#">
           <p class="rating__item-text rating__item-name">${ params.name }</p>
-          <p class="rating__item-text rating__item-score">${ Math.trunc(params.experience) }</p>
+          <p class="rating__item-text rating__item-score">${ Math.trunc(params.points) }</p>
         </li>
-    `)
+    `
+    }
     
     getResponse = () => {
         try {
             const getResponse = async () => {
-                const response = await fetch('http://www.json-generator.com/api/json/get/cekcwtHSIy?indent=2')
-                return await response.json()
+                return this.dataRating.sort((a, b) => b.points - a.points)
             }
         
             getResponse()
-                .then((data) => {
-                    data.sort((a, b) => b.experience - a.experience)
-                        .forEach((params, i) => {
+                .then(data => {
+                    data.forEach((params, i) => {
                             this.render(this.ratingList, this.template(params, i + 1))
                         })
                 })
