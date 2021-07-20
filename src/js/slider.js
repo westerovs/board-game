@@ -1,10 +1,9 @@
-import { render } from './utils.js'
-
 export default class Slider {
     constructor() {
         this.slider = document.querySelector('.slider')
         this.sliderList = this.slider.querySelector('.slider-list')
         this.templateElem = this.slider.querySelector('#template-slider')
+        this.btnAddFriends = this.slider.querySelector('.slider-item-add')
         this.mockFriends = [
             { empty: false },
             { empty: false },
@@ -35,8 +34,12 @@ export default class Slider {
         slide.querySelector('.slider-item').addEventListener('click', this.handleClick);
     }
     
-    handleClick = () => {
-        console.log('click')
+    handleClick = (e) => {
+        console.log('click', e.target)
+    }
+    
+    addFriends = () => {
+        console.log('добавить друзей')
     }
 
     changeImage = (event) => {
@@ -45,8 +48,6 @@ export default class Slider {
 
         if (target.classList.contains('slider-btn-prev')) this.slidePrev()
         if (target.classList.contains('slider-btn-next')) this.slideNext()
-        
-        if (!target.closest('.slider-item')) return
     }
 
     slidePrev = () => {
@@ -64,6 +65,7 @@ export default class Slider {
     init = () => {
         this.mockFriends.forEach(this.createSlide)
         this.slider.addEventListener('click', this.changeImage)
+        this.btnAddFriends.addEventListener('click', this.addFriends)
     }
     
     destroy = () => {

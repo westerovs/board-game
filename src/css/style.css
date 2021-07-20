@@ -1,9 +1,7 @@
-@import "rating.css";
-
 @font-face {
     font-family: "a_Stamper Bold";
     src: local('a_Stamper Bold'), local('a_Stamper-Bold'),
-        url("../fonts/a_Stamper Bold.woff") format("woff");
+    url("../fonts/a_Stamper Bold.woff") format("woff");
     font-weight: 700;
     font-style: normal;
 }
@@ -47,15 +45,27 @@ img {
     height: auto;
 }
 
+/* паттерн доступное для скринридеров чтение элемента*/
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
 .game {
     position: relative;
     margin: 100px auto;
     width: 980px;
     height: 630px;
     box-shadow: 0 0 15px black;
-    /*player-select: none;*/
 }
 
+/* ============ 3d text ============ */
 .game__text-transform {
     position: absolute;
     transform-style: preserve-3d;
@@ -98,18 +108,6 @@ button {
 
 button:disabled {
     cursor: not-allowed;
-}
-
-/*безопасное скрытие элемента*/
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    border: 0;
-    clip: rect(0 0 0 0);
-    overflow: hidden;
 }
 
 .game__background {
@@ -181,6 +179,190 @@ button:disabled {
     background-image: url("../img/controls/bg-rating.png");
 }
 
+
+/* =================================*/
+/* ============ rating =====---==== */
+/* =================================*/
+.rating {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+}
+
+.rating-hide {
+    display: none;
+}
+
+.rating-container {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 523px;
+    height: 455px;
+    border-radius: 20px;
+    border: 6px solid #8A5E2E;
+    background: #c08342;
+    color: white;
+
+    animation-name: show-popup;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+@keyframes show-popup {
+    0% {
+        top: -100%;
+    }
+    100% {
+        top: 50%;
+    }
+}
+
+.rating__title {
+    position: absolute;
+    top: -17px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 264px;
+    height: 34px;
+    border-radius: 20px;
+    line-height: 34px;
+    font-size: 26px;
+    font-family: Arial, sans-serif;
+    color: white;
+    background-color: blue;
+    text-align: center;
+
+    background-image: url("../img/rating/header.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.rating__close {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    border-radius: 5px;
+    width: 26px;
+    height: 26px;
+    background-color: blue;
+    background-image: url("../img/rating/cross.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.rating__body {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 464px;
+    height: 324px;
+    border-radius: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #8C5A31;
+}
+
+.rating-header {
+    padding: 32px 32px 7px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.rating-header-row {
+    display: grid;
+    grid-template-columns: 67px 1fr 90px;
+    width: 403px;
+    height: 30px;
+    border-radius: 10px;
+    color: white;
+
+    background-image: url("../img/rating/table-header.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.rating-header-text {
+    font-size: 14px;
+    line-height: 30px;
+}
+
+.rating__header-place {
+    text-align: center;
+}
+
+.rating__header-name {
+    padding-left: 37px;
+}
+
+/* rating list */
+
+.rating__list {
+    height: 244px;
+    overflow-y: auto;
+    padding: 0 32px;
+}
+
+.rating__item {
+    display: grid;
+    grid-template-columns: 67px 30px 1fr min-content;
+    justify-content: center;
+    align-items: center;
+    width: 403px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    background-color: #3FA3BC;
+
+    background-image: url("../img/rating/table-item.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.rating__item--friend {
+    background-image: url("../img/rating/table-item-friend.png");
+}
+
+.rating__item-place {
+    text-align: center;
+}
+
+.rating__item-img {
+    width: 30px;
+    height: 30px;
+    background-color: #9D4516;
+}
+
+.rating__item-name {
+    padding-left: 5px;
+}
+
+.rating__item-score {
+    min-width: 80px;
+}
+
+/* ======== custom scroll ========= */
+.rating__list::-webkit-scrollbar {
+    width: 10px;
+}
+
+/*стиль рамки скролла */
+.rating__list::-webkit-scrollbar-track {
+    border: none;
+}
+
+/*стиль полоски скролла */
+.rating__list::-webkit-scrollbar-thumb {
+    background: blue;
+    border-radius: 10px;
+}
+
 /* =================================*/
 /* ============ slider ============ */
 /* =================================*/
@@ -188,7 +370,7 @@ button:disabled {
     position: relative;
     padding: 0 30px;
     border-radius: 10px;
-
+    min-width: 530px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -229,6 +411,10 @@ button:disabled {
     background-image: url("../img/slider/item-empty.png");
 }
 
+.slider-item:not(.slider-item--empty):hover {
+    filter: brightness(1.2);
+}
+
 .slider-item-add {
     position: absolute;
     left: 0;
@@ -244,6 +430,10 @@ button:disabled {
     background-image: url("../img/slider/add.png");
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.slider-item-add:hover::before {
+    transform: scale(1.2);
 }
 
 .slider-btn {
@@ -272,6 +462,9 @@ button:disabled {
     transform: translateY(-50%) rotate(-180deg);
 }
 
+/* ======================================== */
+/* ===== генератор чекпоинтов и карты ===== */
+/* ======================================== */
 .game-path {
     position: absolute;
     top: 20px;
@@ -279,13 +472,6 @@ button:disabled {
     z-index: 1;
 }
 
-
-
-/* ======================================== */
-/* ======================================== */
-/* ============ генератор карт ============ */
-/* ======================================== */
-/* ======================================== */
 .game__svg-path {
     position: absolute;
     top: 0;

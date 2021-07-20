@@ -1,3 +1,4 @@
+import { render } from './utils.js'
 import {data} from './mock/data.js'
 
 export default class Rating {
@@ -28,14 +29,8 @@ export default class Rating {
         });
     }
     
-    render = (element, template, place = 'beforeend') => {
-        if (element instanceof Element) {
-            element.insertAdjacentHTML(place, template)
-        }
-    }
-    
     template = (params, i, isFriend) => {
-        const { id, name, lastName, img, points } = params
+        const { id, name, lastName, points } = params
         
         return (`
         <li class="rating__item ${ isFriend ? 'rating__item--friend' : '' }" id="${ id }">
@@ -62,7 +57,7 @@ export default class Rating {
                         friendsId.forEach(friend => {
                             if (friend === params.id) isFriend = params.id
                         })
-                        this.render(this.ratingList, this.template(params, i + 1, isFriend))
+                        render(this.ratingList, this.template(params, i + 1, isFriend))
                         
                         isFriend = null
                     })

@@ -74,7 +74,6 @@ export default class GeneratorMap {
         this.player = document.querySelector('.player')
         this.btnAction = document.querySelector('.btn--action')
     
-        this._PATH_TOTAL_LENGTH = Math.trunc(this.path.getTotalLength())
         this.startStep = step
     }
     

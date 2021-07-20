@@ -12,7 +12,7 @@
 <main id="game" class="game">
 	<img class="game__background" width="980" height="605" src="./src/img/background-map.png" alt="игровое поле">
 	<img class="game__background-path" width="898" height="523" src="./src/img/game-path.png" alt="линия движения игрока">
-  <img class="player" width="21" height="69" src="./src/img/player/player-female.png" alt="иконка игрока">
+  <img class="player" width="44" height="70" src="./src/img/player/player-female.png" alt="иконка игрока">
 
   <!-- невидимый path, который дублирует путь нарисованного дизайнером -->
 	<svg class="game__svg-path" width="980" height="605" xmlns="http://www.w3.org/2000/svg">
@@ -34,10 +34,11 @@
 
   <!-- панель управления -->
 	<section class="game__controls">
+		<h3 class="visually-hidden">управление игрой</h3>
+		<!-- слайдер	-->
 		<div class="slider">
 			<ul class="slider-list">
 				<li class="slider-item slider-item-add" title="добавить друзей"></li>
-
 				<template id="template-slider">
 					<li class="slider-item"></li>
 				</template>
@@ -46,6 +47,7 @@
 			<button type="button" class="slider-btn slider-btn-next" aria-label="следующий слайд"></button>
 		</div>
 
+		<!-- остальные контроллы -->
 		<div id="game-controls" class="game__controls-row">
 			<button type="button" data-action="openChat" disabled class="game__btn btn--chat"
 							aria-label="открыть чат"></button>
@@ -76,7 +78,6 @@
 		</div>
 	</section>
 </main>
-
 
 <script type="module" src="src/js/generatorMap.js"></script>
 <script type="module" src="src/js/rating.js"></script>
